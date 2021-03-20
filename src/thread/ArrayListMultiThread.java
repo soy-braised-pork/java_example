@@ -1,6 +1,5 @@
 package thread;
 
-import kotlin.jvm.Synchronized;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class ArrayListMultiThread {
         @Override
         public void run() {
            // 锁粒度：锁细不锁粗
-           // Synchronized(list){
+//            synchronized(list){
             for (int i=0;i<1000000;i++){
                 synchronized (list){
                     list.add(i);
@@ -28,5 +27,15 @@ public class ArrayListMultiThread {
         }
     }
 
+    public static void main(String[] args) throws InterruptedException{
+        Thread t1=new Thread(new AddThread());
+        Thread t2=new Thread(new AddThread());
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+        System.out.println(list.size());
+
+    }
 
 }
