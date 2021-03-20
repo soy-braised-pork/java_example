@@ -7,20 +7,23 @@ public class ThreadJMM {
     //立即刷新缓存
     private volatile static boolean initData = false;
 
+
     private static void refresh() {
         System.out.println("change data");
-        initData = false;
+        initData = true;
     }
 
 
     private static void loadData() {
         while (!initData) {
-
+            System.out.println("1");
         }
         System.out.println("数据initData被改变-------");
     }
 
+    //主线程
     public static void main(String[] args) {
+        //t1
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -33,6 +36,7 @@ public class ThreadJMM {
             e.printStackTrace();
         }
 
+        //t2
         new Thread(new Runnable() {
             @Override
             public void run() {

@@ -7,10 +7,10 @@ package thread;
  */
 
 //继承Thread方法，重写run方法
-public class Thread1 extends Thread{
+public class Thread1 extends Thread {
 
     @Override
-    public void run(){
+    public void run() {
         System.out.println("1111");
     }
 }

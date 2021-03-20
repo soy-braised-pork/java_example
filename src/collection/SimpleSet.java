@@ -6,8 +6,8 @@ import java.util.TreeSet;
 
 public class SimpleSet {
     public static void main(String[] args) {
-        Set hashSet =new HashSet();
-        Set treeSet=new TreeSet();
+        Set hashSet = new HashSet();
+        Set treeSet = new TreeSet();
 
         //hashset 无序去重
         hashSet.add("t");
@@ -15,7 +15,7 @@ public class SimpleSet {
         hashSet.add("d");
         hashSet.add("v");
         hashSet.add("e");
-        boolean i=hashSet.add("e");
+        boolean i = hashSet.add("e");
         System.out.println(hashSet);
 
 
@@ -25,7 +25,7 @@ public class SimpleSet {
         treeSet.add("d");
         treeSet.add("v");
         treeSet.add("e");
-        boolean f=treeSet.add("e");
+        boolean f = treeSet.add("e");
         System.out.println(treeSet);
     }
 }
