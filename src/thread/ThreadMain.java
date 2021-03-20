@@ -4,7 +4,9 @@ public class ThreadMain {
     public static void main(String[] args) {
 
         Thread1 thread1 = new Thread1();
+        //启动线程，调用start方法，开启一个新的线程去做事
         thread1.start();
+        //run方法里写的是线程做的事，是用来当前线程自己调用的，不需要人为调用
         thread1.run();
 
 
