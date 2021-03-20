@@ -25,7 +25,7 @@ class Logic1 {
     public void calculationLogic(int a, int b, CallBackInterface1 callBackInterface1) throws InterruptedException {
         int result = a + b;
         //让线程等待5s
-        Thread.sleep(3000);
+        Thread.sleep(5*1000);
         //利用传入的对象，回调计算结果
         callBackInterface1.calculationResult(a,b,result);
     }
@@ -58,8 +58,9 @@ class Calculator1 implements CallBackInterface1{
     }
 
 
+    //因为实现了回调接口CallBackInterface，必须要重写计算的结果回调函数calculationResult
     public void calculationResult(int a,int b,int result) {
-        //
+        //控制台输出
         System.out.println(a + "+" + b + "=" + result);
     }
 }
