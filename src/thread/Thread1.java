@@ -6,6 +6,11 @@ package thread;
  * 2、启动相关线程，做指定的事
  */
 
+/**
+ * 写线程方法：让类直接继承Thread
+ *           实现Runnable接口，重写run方法
+ */
+
 //继承Thread方法，重写run方法
 public class Thread1 extends Thread {
 
