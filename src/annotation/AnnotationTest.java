@@ -4,13 +4,19 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * 创建对象的四种方法
+ * 1、new
+ * 2、
+ */
+
 public class AnnotationTest {
 
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //新建Person类
         Person person = new Person();
         //获取Person的Class实例
-        Class<Person> c = Person.class;//???
+        Class<Person> c = Person.class; //生成对于Person.class的Class
         //获取somebody()方法的method实例
         Method mSomebody = c.getMethod("somebody", String.class, int.class);
         //执行该方法
