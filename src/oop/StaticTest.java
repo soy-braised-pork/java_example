@@ -15,7 +15,7 @@ public class StaticTest {
         System.out.println(2);
     }
 
-    //实例构造器
+    //实例构造方法
     StaticTest() {
         System.out.println(3);
     }
