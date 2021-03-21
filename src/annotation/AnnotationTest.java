@@ -4,11 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * 创建对象的四种方法
- * 1、new
- * 2、
- */
+
 
 public class AnnotationTest {
 

@@ -1,6 +1,6 @@
 package oop.example;
 
-public class TestAbstractImplB extends TestAbstract{
+public class TestAbstractImplB extends TestAbstract {
     public String testa(){
         return "ccc";
     }
