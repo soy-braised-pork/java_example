@@ -7,6 +7,7 @@ package oop;
 public class StaticTest {
 
     //类变量；准备阶段加载
+    //要想创建这个类变量，就得先把这个类加载完
     static StaticTest staticTest = new StaticTest();
 
     //static块
@@ -33,9 +34,9 @@ public class StaticTest {
     //实例变量
     int a = 5;
 
-    //静态变量
-    static int b = 6;
-//    static final
+    //静态变量 类变量
+    static int b = 6; //在准备阶段，这里的b值是0，b同时也在准备阶段赋值成6  准备：赋值+分配内存
+//    static final   常量在编译时就已赋值
 
 
     public static void main(String[] args) {
