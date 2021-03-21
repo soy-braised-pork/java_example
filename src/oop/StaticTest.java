@@ -5,12 +5,17 @@ package oop;
  */
 
 public class StaticTest {
+
+    //类变量；准备阶段加载
+    static StaticTest staticTest = new StaticTest();
+
     //static块
     static {
         System.out.println(1);
     }
 
     //实例代码块
+    //先执行
     {
         System.out.println(2);
     }
