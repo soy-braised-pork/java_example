@@ -58,6 +58,9 @@ public class StaticTest {
         // ClassLoader 指定加载相应的类
         // ClassLoader.getSystemClassLoader().getResource();
 
+        /**
+         * 创建对象
+         */
 
     }
 
