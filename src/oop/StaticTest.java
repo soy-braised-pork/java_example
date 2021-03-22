@@ -47,6 +47,8 @@ public class StaticTest {
         //调用就是加载类的过程
         staticFun();
 
+
+
         //核心类库
         URL[] urls = Launcher.getBootstrapClassPath().getURLs();
         for (URL url : urls) {
