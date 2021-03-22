@@ -43,10 +43,9 @@ public class StaticTest {
 //    static final   常量在编译时就已赋值
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         //调用就是加载类的过程
         staticFun();
-
 
 
         //核心类库
@@ -59,8 +58,11 @@ public class StaticTest {
         // ClassLoader.getSystemClassLoader().getResource();
 
         /**
-         * 创建对象
+         * 创建对象的方法：
          */
+        //1、根据某一个类的全名拿到类的对象
+        StaticTest staticTest = new StaticTest();
+        Class.forName("oop.StaticTest");
 
     }
 
