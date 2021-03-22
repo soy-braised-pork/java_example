@@ -1,5 +1,9 @@
 package oop;
 
+import sun.misc.Launcher;
+
+import java.net.URL;
+
 /**
  * 类加载过程
  */
@@ -42,6 +46,17 @@ public class StaticTest {
     public static void main(String[] args) {
         //调用就是加载类的过程
         staticFun();
+
+        //核心类库
+        URL[] urls = Launcher.getBootstrapClassPath().getURLs();
+        for (URL url : urls) {
+            System.out.println(url.toExternalForm());
+        }
+
+        // ClassLoader 指定加载相应的类
+        // ClassLoader.getSystemClassLoader().getResource();
+
+
     }
 
 }
