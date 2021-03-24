@@ -87,6 +87,8 @@ public class StaticTest {
 
         String aaa = "";
 
+        String aaa1 = new String("");
+
     }
 
 }
