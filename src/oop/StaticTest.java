@@ -1,7 +1,13 @@
 package oop;
 
+import annotation.Person;
 import sun.misc.Launcher;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
 /**
@@ -43,7 +49,7 @@ public class StaticTest {
 //    static final   常量在编译时就已赋值
 
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         //调用就是加载类的过程
         staticFun();
 
@@ -60,9 +66,26 @@ public class StaticTest {
         /**
          * 创建对象的方法：
          */
-        //1、根据某一个类的全名拿到类的对象
         StaticTest staticTest = new StaticTest();
-        Class.forName("oop.StaticTest");
+        //1、根据某一个类的全名拿到类的对象 ----->  反射
+        Class<?> aClass = Class.forName("oop.StaticTest");
+        StaticTest staticTest1 = (StaticTest) aClass.newInstance();
+
+        //2、new
+
+        //3、通过clone的方式
+        Constructor<Person> constructor = Person.class.getConstructor(Integer.class, Integer.class, String.class);
+        Person person1 = constructor.newInstance(2, 123, "aaa");
+        Person clone = (Person) person1.clone();
+
+        //序列化与反序列化
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("test.abc"));
+        ObjectOutputStream.writeObject(clone);
+
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileInputStream("test.abc"));
+        Person object = (Person) objectOutputStream.readObject();
+
+        String aaa = "";
 
     }
 
