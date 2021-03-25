@@ -73,15 +73,15 @@ public class StaticTest {
         Class<?> aClass = Class.forName("oop.StaticTest");
         StaticTest staticTest1 = (StaticTest) aClass.newInstance();
 
-        for (Constructor<?> constructor:constructors){
+        for (Constructor<?> constructor : constructors) {
             System.out.println(constructors);
         }
-        Constructor<Person> constructor = Person.class.getConstructor(Integer.class,Integer.class, String.class);
-        Person person=constructor.newInstance(1,123,"aaaa");
+        Constructor<Person> constructor = Person.class.getConstructor(Integer.class, Integer.class, String.class);
+        Person person = constructor.newInstance(1, 123, "aaaa");
 
 
         //3、通过clone的方式
-        Constructor<Person> constructor1 = Person.class.getConstructor(Integer.class,Integer.class, String.class);
+        Constructor<Person> constructor1 = Person.class.getConstructor(Integer.class, Integer.class, String.class);
         Person person1 = constructor.newInstance(2, 123, "aaa");
         Person clone = (Person) person1.clone();
 

@@ -5,7 +5,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
-
 public class AnnotationTest {
 
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
@@ -26,21 +25,22 @@ public class AnnotationTest {
         mEmpty.invoke(person, new Object[]{});
         iteratorAnnotations(mEmpty);
     }
+
     private static void iteratorAnnotations(Method method) {
         //判断方法是否包含MyAnnotation注解
-        if (method.isAnnotationPresent(TestAnnotation.class)){
+        if (method.isAnnotationPresent(TestAnnotation.class)) {
             //获取方法是否包含MyAnnotation注解
-            TestAnnotation myAnnotation=method.getAnnotation(TestAnnotation.class);
+            TestAnnotation myAnnotation = method.getAnnotation(TestAnnotation.class);
             //获取myAnnotation的值，并打印出来
-            String[] values= myAnnotation.value();
-            for (String str:values)
-                System.out.println(str+",");
+            String[] values = myAnnotation.value();
+            for (String str : values)
+                System.out.println(str + ",");
             System.out.println();
         }
 
         //获取方法上所有注解，并打印出来
-        Annotation[] annotations= method.getAnnotations();
-        for (Annotation annotation:annotations){
+        Annotation[] annotations = method.getAnnotations();
+        for (Annotation annotation : annotations) {
             System.out.println(annotation);
         }
     }
