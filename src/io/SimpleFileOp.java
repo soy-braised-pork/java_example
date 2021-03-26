@@ -157,6 +157,14 @@ public class SimpleFileOp {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        String fileName="src/nomal_io.txt";
+        SimpleFileOp.readFileOne(fileName);
+        SimpleFileOp.readFileByChars(fileName);
+        SimpleFileOp.readFileByLines(fileName);
+        SimpleFileOp.readFileByRandomAccess(fileName);
+    }
 }
 
 
