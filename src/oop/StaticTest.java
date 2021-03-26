@@ -73,21 +73,21 @@ public class StaticTest {
         Class<?> aClass = Class.forName("oop.StaticTest");
         StaticTest staticTest1 = (StaticTest) aClass.newInstance();
 
-        for (Constructor<?> constructor : constructors) {
-            System.out.println(constructors);
-        }
+//        for (Constructor<?> constructor : constructors) {
+//            System.out.println(constructors);
+//        }
         Constructor<Person> constructor = Person.class.getConstructor(Integer.class, Integer.class, String.class);
         Person person = constructor.newInstance(1, 123, "aaaa");
 
-
-        //3、通过clone的方式
-        Constructor<Person> constructor1 = Person.class.getConstructor(Integer.class, Integer.class, String.class);
-        Person person1 = constructor.newInstance(2, 123, "aaa");
-        Person clone = (Person) person1.clone();
-
-        //序列化与反序列化
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("test.abc"));
-        ObjectOutputStream.writeObject(clone);
+//
+//        //3、通过clone的方式
+//        Constructor<Person> constructor1 = Person.class.getConstructor(Integer.class, Integer.class, String.class);
+//        Person person1 = constructor.newInstance(2, 123, "aaa");
+//        Person clone = (Person) person1.clone();
+//
+//        //序列化与反序列化
+//        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("test.abc"));
+//        ObjectOutputStream.writeObject(clone);
 
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("test.abc"));
         Person object = (Person) objectInputStream.readObject();
