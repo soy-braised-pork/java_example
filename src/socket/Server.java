@@ -9,7 +9,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         //监听指定的端口
-        int port=55535;
+        int port=55533;
         ServerSocket server=new ServerSocket(port);
 
         //server将一直等待连接的到来
