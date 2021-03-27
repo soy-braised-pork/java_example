@@ -61,9 +61,21 @@ public class HashMapDemo<K, V> extends AbstractMap<K, V> implements Map<K, V>,
         this.threshold=tableSzieFor(initialCapacity);
     }
 
-    public HashMapDemo(){
-
+    public HashMapDemo(int initialCapacity){
+        this(initialCapacity,DEFAULT_LOAD_FACTOR);
     }
+
+    public HashMapDemo(){
+        this.loadFactor=DEFAULT_LOAD_FACTOR;
+    }
+
+    public HashMapDemo(Map<? extends K, ? extends V>m){
+        this.l
+    }
+
+
+
+
 }
 
 
