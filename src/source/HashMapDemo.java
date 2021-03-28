@@ -54,22 +54,34 @@
 //
 //    /**
 //     * 系列构造方法，推荐在初始化时根据实际情况设置好初始值，用好了可以显著减少 resize，提升效率
+        // 这个构造函数主要做的事情（指定容量和指定加载因子）
+        // 1、对传入的初始化容量、加载因子进行校验处理
+        // 2、计算出大于初始化容量的最小2的N次方作为哈希表table的长度，再利用该长度创建Entry数组
 //     */
 //    public HashMapDemo(int initialCapacity, float loadFactor) throws IllegalAccessException {
+          //初始化容量<0,抛出异常
 //        if (initialCapacity < 0)
 //            throw new IllegalAccessException("Illegal initial capacity:" + initialCapacity);
+//        初始化容量>最大容量，默认使用最大容器
 //        if (initialCapacity > MAXIMUM_CAPACITY)
 //            initialCapacity = MAXIMUM_CAPACITY;
+          //加载因子<=0或者为空，抛出异常
 //        if (loadFactor <= 0 || Float.isNaN(loadFactor))
 //            throw new IllegalArgumentException("Illegal load factor:" + loadFactor);
 //        this.loadFactor = loadFactor;
 //        this.threshold = tableSzieFor(initialCapacity);
 //    }
-//
+
+/**
+ *构造函数：指定容量
+ */
 //    public HashMapDemo(int initialCapacity) {
 //        this(initialCapacity, DEFAULT_LOAD_FACTOR);
 //    }
 //
+/**
+ * 构造函数：什么参数都没有
+ */
 //    public HashMapDemo() {
 //        this.loadFactor = DEFAULT_LOAD_FACTOR;
 //    }
