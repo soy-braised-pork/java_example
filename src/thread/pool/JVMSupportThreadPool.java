@@ -35,22 +35,20 @@ public class JVMSupportThreadPool {
 //        newCachedThreadPool.shutdown();
 
 
-
 //        for (int i=0;i<10;i++){
 //            newFixedThreadPool.submit(testPoolRunnable);
 //        }
 //        newFixedThreadPool.shutdown();
 
 
-
         //设置等待时间
-        for (int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             //2s之内
             //固定延迟：任务之间的时间间隔，也就是说当上一个任务执行完成后，我会在图定延迟时间后出发第二次任务。注重距上次完成任务后的时间间隔。
-            newScheduledThreadPool.scheduleWithFixedDelay(testPoolRunnable,0,2, TimeUnit.SECONDS);
+            newScheduledThreadPool.scheduleWithFixedDelay(testPoolRunnable, 0, 2, TimeUnit.SECONDS);
             //每隔2s
             // 固定频率：每间隔固定时间就执行一次任务。注重频率。
-            newScheduledThreadPool.scheduleAtFixedRate(testPoolRunnable,0,2,TimeUnit.SECONDS);
+            newScheduledThreadPool.scheduleAtFixedRate(testPoolRunnable, 0, 2, TimeUnit.SECONDS);
             newScheduledThreadPool.submit(testPoolRunnable);
         }
 
