@@ -31,7 +31,7 @@ public class StaticTest {
 
     //实例构造方法
     StaticTest() {
-        System.out.println("实例构造方法";
+        System.out.println("实例构造方法");
     }
 
     //static方法
