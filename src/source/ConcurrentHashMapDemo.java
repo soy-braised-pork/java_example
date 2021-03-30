@@ -92,6 +92,7 @@ public class ConcurrentHashMapDemo<K, V> extends AbstractMap<K, V> implements Co
         if (key == null || value == null)
             throw new NullPointerException();
         int hash = spread(key.hashCode());
+        //统计节点个数
         int binCount = 0;
         for (Node<K, V>[] tab = table; ; ) {
             Node<K, V> f;
