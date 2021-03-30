@@ -20,23 +20,23 @@ public class StaticTest {
 
     //static块
     static {
-        System.out.println(1);
+        System.out.println("static块");
     }
 
     //实例代码块
     //先执行
     {
-        System.out.println(2);
+        System.out.println("实例代码块");
     }
 
     //实例构造方法
     StaticTest() {
-        System.out.println(3);
+        System.out.println("实例构造方法";
     }
 
     //static方法
     public static void staticFun() {
-        System.out.println(4);
+        System.out.println("static方法");
     }
 
     //实例变量
