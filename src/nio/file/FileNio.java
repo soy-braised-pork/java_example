@@ -7,35 +7,35 @@ import java.nio.channels.FileChannel;
 
 public class FileNio {
     public static void main(String[] args) {
-        RandomAccessFile aFile=null;
+        RandomAccessFile aFile = null;
         try {
-            aFile=new RandomAccessFile("src/nio.txt","rw");
+            aFile = new RandomAccessFile("src/nio.txt", "rw");
             //传输Buffer数据通道
-            FileChannel fileChannel=aFile.getChannel();
+            FileChannel fileChannel = aFile.getChannel();
             //放数据的容器
-            ByteBuffer buf=ByteBuffer.allocateDirect(10);
-            int bytesRead=fileChannel.read(buf);
+            ByteBuffer buf = ByteBuffer.allocateDirect(10);
+            int bytesRead = fileChannel.read(buf);
             System.out.println(bytesRead);
-            while (bytesRead!=-1){
+            while (bytesRead != -1) {
                 //读写切换
                 //buffer有读模式和写模式
                 buf.flip();
-                while (buf.position()<3){
+                while (buf.position() < 3) {
                     System.out.println((char) buf.get());
                 }
                 System.out.println();
                 buf.compact();
-                bytesRead= fileChannel.read(buf);
+                bytesRead = fileChannel.read(buf);
                 System.out.println(bytesRead);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
-                if (aFile!=null){
+                if (aFile != null) {
                     aFile.close();
                 }
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
