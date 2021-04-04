@@ -20,6 +20,7 @@ public class BIOSocketServer {
             serverSocket = new ServerSocket(10010);
 
             int recvMsgSzie = 0;
+
             byte[] recvBuf = new byte[1024];
             while (true) {
                 /*
