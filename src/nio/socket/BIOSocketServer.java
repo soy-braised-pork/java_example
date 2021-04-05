@@ -7,6 +7,14 @@ import java.net.Socket;
 import java.net.SocketAddress;
 
 /**
+ * BIO：
+ * 同步阻塞式IO，
+ * 服务器实现模式为一个连接一个线程，
+ * 即客户端有连接请求时服务端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。
+ */
+
+
+/**
  * BIO处理网络连接有两部分
  * 1、ServerSocket 服务器
  * 2、Socket 客户端
