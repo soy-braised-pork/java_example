@@ -89,20 +89,24 @@ public class NioSocketServer {
             *      OP_CONNECT    连接就绪状态
             *      OP_READ       读就绪--->当前Channel有数据可读
             *      OP_WRITE      写就绪--->等待写数据 */
+            //在和客户端连接成功之后，为了可以接收到客户端的信息，需要给通道设置读的权限。
             ssc.register(selector,SelectionKey.OP_ACCEPT);
-            //不断轮循
+            //不断轮循,监听selector上是否有需要处理的事件，如果有，则进行处理
             while (true){
                 //每隔3s，释放一次selector
                 if (selector.select(TIMEOUT)==0){
                     System.out.println("==");
                     continue;
                 }
+                // 获得selector中选中的项的迭代器，选中的项为注册的事件
                 Iterator<SelectionKey> iter=selector.selectedKeys().iterator();
                 while (iter.hasNext()){
                     SelectionKey key=iter.next();
+                    // 客户端请求连接事件
                     if (key.isAcceptable()){
                         handleAccept(key);
                     }
+                    // 获得了可读的事件
                     if (key.isReadable()){
                         handleRead(key);
                     }
@@ -112,6 +116,7 @@ public class NioSocketServer {
                     if (key.isConnectable()){
                         System.out.println("isConnectable=true");
                     }
+                    // 删除已选的key,以防重复处理
                     iter.remove();
                 }
             }
