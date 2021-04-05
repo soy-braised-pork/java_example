@@ -10,6 +10,12 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
 /**
+ * NIO：
+ * 同步非阻塞式IO，服务器实现模式为一个请求一个线程，
+ * 即客户端发送连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。
+ */
+
+/**
  * 局限性
  * 从始至终只使用了一个线程，多线程可发挥多核CPU优势
  * 代码复杂度高
