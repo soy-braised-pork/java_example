@@ -1,11 +1,13 @@
 package nio.socket;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.Iterator;
 
 /**
  * 局限性
@@ -70,8 +72,56 @@ public class NioSocketServer {
             selector = Selector.open();
             //创建ServerSocketChannel
             ssc = ServerSocketChannel.open();
+            //socket绑定端口
+            ssc.socket().bind(new InetSocketAddress(PORT));
+            //设置为非阻塞模式
+            /*selector只接受费阻塞模式的Channel注册*/
+            ssc.configureBlocking(false);
+            //往selector上注册事件
+            /*
+            * 事件：OP_ACCEPT     可以接收相关的数据
+            *      OP_CONNECT    连接就绪状态
+            *      OP_READ       读就绪--->当前Channel有数据可读
+            *      OP_WRITE      写就绪--->等待写数据 */
+            ssc.register(selector,SelectionKey.OP_ACCEPT);
+            //不断轮循
+            while (true){
+                //每隔3s，释放一次selector
+                if (selector.select(TIMEOUT)==0){
+                    System.out.println("==");
+                    continue;
+                }
+                Iterator<SelectionKey> iter=selector.selectedKeys().iterator();
+                while (iter.hasNext()){
+                    SelectionKey key=iter.next();
+                    if (key.isAcceptable()){
+                        handleAccept(key);
+                    }
+                    if (key.isReadable()){
+                        handleRead(key);
+                    }
+                    if (key.isWritable()&& key.isValid()){
+                        handleWrite(key);
+                    }
+                    if (key.isConnectable()){
+                        System.out.println("isConnectable=true");
+                    }
+                    iter.remove();
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (selector!=null) {
+                    selector.close();
+                }
+                if (ssc!=null){
+                    ssc.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
