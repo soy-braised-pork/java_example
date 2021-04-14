@@ -1,5 +1,7 @@
 package thread.lock;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * 锁：保证线程安全性
  * 用法：
@@ -14,6 +16,8 @@ public class BadLock implements Runnable {
     public static Integer i = 0;
 
     private static BadLock badLock = new BadLock();
+
+//    ReentrantLock
 
     @Override
     public void run() {
