@@ -7,25 +7,21 @@ package thread;
  * 3、指令重排
  */
 
-public class Thread3 extends Thread{
-
+public class Thread3 implements Runnable{
+    int a=0;
 
     @Override
     public void run() {
-        int b=3;
-        for (int a=0;a>50;a++){
-            if (a%2==0){
-                b++;
-            }else {
-                b--;
-            }
-            System.out.println(b);
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(a++);
         }
     }
 
     public static void main(String[] args) {
-        Thread3 thread3=new Thread3();
-        thread3.start();
+        Thread3 thread3 = new Thread3();
+            new Thread(thread3).start();
+            new Thread(thread3).start();
     }
+
 
 }
