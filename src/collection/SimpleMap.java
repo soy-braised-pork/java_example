@@ -2,6 +2,7 @@ package collection;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 位置=散列码%桶总数
@@ -11,6 +12,7 @@ import java.util.Map;
 public class SimpleMap {
     public static void main(String[] args) {
         Map map = new HashMap();
+        Map map1 = new ConcurrentHashMap();
         map.put("a", "b");
         map.put("b", "c");
         map.put("d", "b");
