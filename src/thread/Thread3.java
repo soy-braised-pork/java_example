@@ -7,21 +7,36 @@ package thread;
  * 3、指令重排
  */
 
-public class Thread3 implements Runnable{
-    int a=0;
+public class Thread3 {
 
-    @Override
-    public void run() {
-        for (int i = 0; i < 10000; i++) {
-            System.out.println(a++);
-        }
+    volatile boolean running = false;
+
+    boolean get() {
+        return running;
     }
 
-    public static void main(String[] args) {
-        Thread3 thread3 = new Thread3();
-            new Thread(thread3).start();
-            new Thread(thread3).start();
+    void doSetTrue() {
+        running = true;
     }
 
+    public static void main(String[] args) throws InterruptedException {
+        Thread3 instance = new Thread3();
+
+        new Thread(
+                () -> {
+                    while (!instance.get()) {
+                    }
+
+                    System.out.println("Thread 1 finished.");
+                }).start();
+
+        Thread.sleep(100);
+
+        new Thread(
+                () -> {
+                    instance.doSetTrue();
+                    System.out.println("Thread 2 finished.");
+                }).start();
+    }
 
 }
