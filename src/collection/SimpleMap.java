@@ -13,9 +13,11 @@ public class SimpleMap {
     public static void main(String[] args) {
         Map map = new HashMap();
         Map map1 = new ConcurrentHashMap();
+        map.put(1,123);
         map.put("a", "b");
         map.put("b", "c");
         map.put("d", "b");
+
         System.out.println(map);
     }
 }

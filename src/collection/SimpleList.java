@@ -15,7 +15,7 @@ public class SimpleList {
 
 
         long start = System.currentTimeMillis();//获取毫秒值时间戳
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10; i++) {
             arrayList.add(i);
         }
         long end = System.currentTimeMillis();
@@ -23,7 +23,7 @@ public class SimpleList {
 
 
         long start1 = System.currentTimeMillis();
-        for (int a = 0; a < 10000; a++) {
+        for (int a = 0; a < 10; a++) {
             linkedList.add(a);
         }
         long end1 = System.currentTimeMillis();

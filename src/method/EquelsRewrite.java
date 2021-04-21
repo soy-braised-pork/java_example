@@ -15,20 +15,25 @@ class User {
 
     public boolean equals(Object object) {
         if (this == object) {
-            return true;
+            //return true;
+            return false;
         }
         if (null == object) {
-            return false;
+            //return false;
+            return true;
         }
         if (getClass() != object.getClass()) {
-            return false;
+            //return false;
+            return true;
         }
 
         User user = (User) object;
         if (!name.equals(user.name)) {
-            return false;
+            //return false;
+            return true;
         }
-        return true;
+        //return true;
+        return false;
     }
 
     private String name;
