@@ -85,7 +85,7 @@ public class StaticTest {
 //        Person person1 = constructor.newInstance(2, 123, "aaa");
 //        Person clone = (Person) person1.clone();
 //
-//        //序列化与反序列化
+//        //4、序列化与反序列化
 //        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("test.abc"));
 //        ObjectOutputStream.writeObject(clone);
 

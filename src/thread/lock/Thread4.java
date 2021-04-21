@@ -1,4 +1,4 @@
-package thread;
+package thread.lock;
 
 public class Thread4 implements Runnable {
 
