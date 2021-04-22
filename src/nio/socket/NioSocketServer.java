@@ -35,7 +35,10 @@ public class NioSocketServer {
 
     public static void handleAccept(SelectionKey key) throws IOException {
         ServerSocketChannel ssChannel = (ServerSocketChannel) key.channel();
+        //
         SocketChannel sc = ssChannel.accept();
+        //！！！OS  NOBLOCKING
+        //只让接受客户端  不阻塞
         sc.configureBlocking(false);
         sc.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocateDirect(BUF_SIZE));
     }
@@ -44,7 +47,7 @@ public class NioSocketServer {
     public static void handleRead(SelectionKey key) throws IOException {
         SocketChannel sc = (SocketChannel) key.channel();
         ByteBuffer buf = (ByteBuffer) key.attachment();
-        long bytesRead = sc.read(buf);
+        long bytesRead = sc.read(buf);  //>0读到数据    0没发东西   -1断开连接
         while (bytesRead > 0) {
             buf.flip();
             while (buf.hasRemaining()) {
