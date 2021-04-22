@@ -38,7 +38,7 @@ public class BIOSocketServer {
                          ！！！！！nio
                  */
                 //当客户端向服务端发起连接，服务端的ServerSocket就可以通过accept方法，拿到客户端连接
-                Socket clntSocket = serverSocket.accept();
+                Socket clntSocket = serverSocket.accept();  //监听，阻塞
                 SocketAddress clientAddress = clntSocket.getRemoteSocketAddress();
                 System.out.println("Handling client at" + clientAddress);
                 in = clntSocket.getInputStream();

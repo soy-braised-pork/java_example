@@ -38,7 +38,7 @@ public class NioSocketServer {
         //
         SocketChannel sc = ssChannel.accept();
         //！！！OS  NOBLOCKING
-        //只让接受客户端  不阻塞
+        //只让接受客户端accept  不阻塞
         sc.configureBlocking(false);
         sc.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocateDirect(BUF_SIZE));
     }
@@ -78,8 +78,7 @@ public class NioSocketServer {
         Selector selector = null;
         ServerSocketChannel ssc = null;
         try {
-            //调用selector的open方法表示创建一个selector出来
-            selector = Selector.open();
+            //调用selector的open方法
             //创建ServerSocketChannel
             ssc = ServerSocketChannel.open();
             //socket绑定端口
