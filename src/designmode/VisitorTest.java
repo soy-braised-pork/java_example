@@ -1,73 +1,56 @@
 package designmode;
 
-
 import java.util.ArrayList;
 
-interface IVisitor {
+interface IVisitor{
     void visit(AbsCom com);
 }
-
-class Visitor1 implements IVisitor {
+class Visitor1 implements IVisitor{
     @Override
     public void visit(AbsCom com) {
-        System.out.println("visit1:" + com.getName());
-        for (AbsCom c : com.getAbsComs()) {
+        System.out.println("visit1:"+com.getName());
+        for(AbsCom c:com.getAbsComs()){
             c.accept();
         }
     }
 }
-
-class Visitor2 implements IVisitor {
-
+class Visitor2 implements IVisitor{
     @Override
     public void visit(AbsCom com) {
-        System.out.println("visit2" + com.getName());
+        System.out.println("visit2:"+com.getName());
     }
 }
-
-abstract class Abscom {
+abstract class AbsCom{
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     private String name;
     protected IVisitor visitor;
-
-    public Abscom(IVisitor visitor) {
-        this.visitor = visitor;
+    public AbsCom(IVisitor visitor){
+        this.visitor=visitor;
     }
-
-    private ArrayList<Abscom> abscoms = new ArrayList<>();
-
+    private ArrayList<AbsCom> absComs=new ArrayList<>();
     public ArrayList<AbsCom> getAbsComs() {
         return absComs;
     }
-
-    public void add(AbsCom com) {
+    public void add(AbsCom com){
         this.absComs.add(com);
     }
-
     abstract public void accept();
 }
-
 class Com1 extends AbsCom {
 
     public Com1(IVisitor visitor) {
         super(visitor);
     }
-
     @Override
     public void accept() {
         super.visitor.visit(this);
     }
 }
-}
-
-
 public class VisitorTest {
     public static void main(String[] args) {
         IVisitor visitor1=new Visitor1();
