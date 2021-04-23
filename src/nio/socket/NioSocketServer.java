@@ -2,6 +2,8 @@ package nio.socket;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+//new io
+//NIO的包，下面提供了一些新的接口
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -34,8 +36,8 @@ public class NioSocketServer {
     }
 
     public static void handleAccept(SelectionKey key) throws IOException {
+        //API--->new IO
         ServerSocketChannel ssChannel = (ServerSocketChannel) key.channel();
-        //
         SocketChannel sc = ssChannel.accept();
         //！！！OS  NOBLOCKING
         //只让接受客户端accept  不阻塞

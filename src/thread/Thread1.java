@@ -8,7 +8,7 @@ package thread;
 
 /**
  * 写线程方法：让类直接继承Thread
- *           实现Runnable接口，重写run方法
+ * 实现Runnable接口，重写run方法
  */
 
 //继承Thread方法，重写run方法
