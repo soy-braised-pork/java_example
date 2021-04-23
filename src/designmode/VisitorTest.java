@@ -2,70 +2,92 @@ package designmode;
 
 import java.util.ArrayList;
 
-interface IVisitor{
-    void visit(AbsCom com);
+/**
+ * 访问者
+ */
+
+interface Visitor {
+    void visit(Com com);
 }
-class Visitor1 implements IVisitor{
+
+abstract class Com {
+    private String name;
+    protected Visitor visitor;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Com(Visitor visitor) {
+        this.visitor = visitor;
+    }
+
+    private ArrayList<Com> coms = new ArrayList<>();
+
+    public ArrayList<Com> getComs() {
+        return coms;
+    }
+
+    public void add(Com com) {
+        this.coms.add(com);
+    }
+
+    public abstract void accept();
+}
+
+class Visitor1 implements Visitor {
     @Override
-    public void visit(AbsCom com) {
-        System.out.println("visit1:"+com.getName());
-        for(AbsCom c:com.getAbsComs()){
+    public void visit(Com com) {
+        System.out.println("visitor1:" + com.getName());
+        for (Com c : com.getComs()) {
             c.accept();
         }
     }
 }
-class Visitor2 implements IVisitor{
-    @Override
-    public void visit(AbsCom com) {
-        System.out.println("visit2:"+com.getName());
-    }
-}
-abstract class AbsCom{
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    private String name;
-    protected IVisitor visitor;
-    public AbsCom(IVisitor visitor){
-        this.visitor=visitor;
-    }
-    private ArrayList<AbsCom> absComs=new ArrayList<>();
-    public ArrayList<AbsCom> getAbsComs() {
-        return absComs;
-    }
-    public void add(AbsCom com){
-        this.absComs.add(com);
-    }
-    abstract public void accept();
-}
-class Com1 extends AbsCom {
 
-    public Com1(IVisitor visitor) {
+class Visitor2 implements Visitor {
+
+    @Override
+    public void visit(Com com) {
+        System.out.println("visitor2:" + com.getName());
+    }
+}
+
+class Com1 extends Com {
+
+    public Com1(Visitor visitor) {
         super(visitor);
     }
+
     @Override
     public void accept() {
         super.visitor.visit(this);
     }
 }
+
 public class VisitorTest {
     public static void main(String[] args) {
-        IVisitor visitor1=new Visitor1();
-        IVisitor visitor2=new Visitor2();
-        AbsCom com1=new Com1(visitor1);
+        Visitor visitor1 = new Visitor1();
+        Visitor visitor2 = new Visitor2();
+
+        Com com1 = new Com1(visitor1);
         com1.setName("com1");
-        AbsCom com2=new Com1(visitor1);
+
+        Com com2 = new Com1(visitor1);
         com2.setName("com2");
-        AbsCom com3=new Com1(visitor2);
+
+        Com com3 = new Com1(visitor2);
         com3.setName("com3");
-        AbsCom com4=new Com1(visitor1);
-        com4.setName("com4");
-        com1.add(com2);
-        com2.add(com3);
-        com3.add(com4);
+
+        com1.add(com3);
+        com2.add(com1);
+        com3.add(com2);
         com1.accept();
     }
+
+
 }

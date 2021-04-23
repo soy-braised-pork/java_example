@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 /**
  * 组合模式
+ *
+ * 树形
  */
 
 abstract class Component {
 
+    //文件路径
     abstract public void printlocal(String perfix);
 
     public void add(Component composite) throws Exception {
