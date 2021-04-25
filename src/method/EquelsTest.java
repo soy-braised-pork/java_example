@@ -33,5 +33,9 @@ public class EquelsTest {
         //创建str3时，str3指向str1，所以str3和str1指向同一个地址，存储数据自然也相同
         System.out.println(str1 == str3);  //true
         System.out.println(str1.equals(str3));  //true
+
+        Integer c = 3;
+        int d = 3;
+        System.out.println(c == d);
     }
 }
