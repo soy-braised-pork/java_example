@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 
 
-public class TestMysqlCRUD {
+class TestMysqlCRUD {
 
     public static void main(String[] args) {
         Connection connection = null;
