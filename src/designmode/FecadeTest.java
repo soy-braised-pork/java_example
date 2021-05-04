@@ -18,12 +18,15 @@ class User {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getAge() {
         return age;
     }
+
     public void setAge(String age) {
         this.age = age;
     }
@@ -35,14 +38,14 @@ class Fecade {
 
     }
 
-    public void write(){
+    public void write() {
 
     }
 }
 
 public class FecadeTest {
     public static void main(String[] args) {
-        Fecade fecade=new Fecade();
+        Fecade fecade = new Fecade();
         fecade.render();
         fecade.write();
         System.out.println();
