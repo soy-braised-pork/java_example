@@ -16,7 +16,7 @@ public class FileNioV2 {
                 FileChannel inChannel
                         = FileChannel.open(Paths.get("src/nio.txt"), StandardOpenOption.READ);
                 FileChannel outChannel
-                        = FileChannel.open(Paths.get("src/write_nio.txt"), StandardOpenOption.WRITE)） {
+                        = FileChannel.open(Paths.get("src/write_nio.txt"), StandardOpenOption.WRITE)){
             ByteBuffer buf = ByteBuffer.allocate(48);
                 /*
                 1、channel.write()和read()方法是需要移动position和limit指针的
@@ -35,8 +35,8 @@ public class FileNioV2 {
                 注意fileChannel.write()是在while循环中调用的。
                 因为无法保证write()方法一次能向FileChannel写入多少字节，
                 因此需要重复调用write()方法，直到Buffer中已经没有尚未写入通道的字节。
-                 */){
-                while (buf.hasRemaining()
+                 */
+                while (buf.hasRemaining()){
                     outChannel.write(buf);
                 }
 //                fileChannel.position(long);
