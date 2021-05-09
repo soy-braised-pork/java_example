@@ -10,7 +10,7 @@ public class FileStreamIO {
             byte[] buf = new byte[1024];
             int bytesRead = in.read(buf);
             while (bytesRead != -1) {
-                for (int i = 0; i < bytesRead; i++) {
+                for (int i = 0; i < bytesRead; i++) {   //48--->0
                     System.out.println(buf[i]);
                 }
                 bytesRead = in.read(buf);
