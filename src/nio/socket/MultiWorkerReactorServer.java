@@ -41,7 +41,7 @@ public class MultiWorkerReactorServer {
             try {
                 SocketChannel socketChannel = serverSocketChannel.accept();
                 socketChannel.configureBlocking(false);
-                socketChannel.register(selector, SelectionKey.OP_READ, new DispatchHanler());
+                socketChannel.register(selector, SelectionKey.OP_READ, new DispatchHandler());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -85,31 +85,32 @@ public class MultiWorkerReactorServer {
                                         String msg = "";
                                         do {
                                             cnt = socketChannel.read(buffer);
-                                            if (cnt>0){
-                                                total+=cnt;
-                                                msg+=new String(buffer.array());
+                                            if (cnt > 0) {
+                                                total += cnt;
+                                                msg += new String(buffer.array());
                                             }
                                             buffer.clear();
-                                        }while (cnt>=buffer.capacity());
-                                        System.out.println("read data num:"+total);
-                                        System.out.println("recv msg:"+msg);
+                                        } while (cnt >= buffer.capacity());
+                                        System.out.println("read data num:" + total);
+                                        System.out.println("recv msg:" + msg);
 
                                         //回写数据
-                                        ByteBuffer snedBuf=ByteBuffer.allocate(msg.getBytes().length+1);
+                                        ByteBuffer snedBuf = ByteBuffer.allocate(msg.getBytes().length + 1);
                                         snedBuf.put(msg.getBytes());
                                         socketChannel.write(snedBuf);
-                                    }catch (Exception e){
+                                    } catch (Exception e) {
                                         e.printStackTrace();
-                                        if (socketChannel!=null){
+                                        if (socketChannel != null) {
                                             try {
                                                 socketChannel.close();
-                                            } catch(Exception ex){
-                                            ex.printStackTrace();
+                                            } catch (Exception ex) {
+                                                ex.printStackTrace();
+                                            }
                                         }
                                     }
                                 }
-                            }
                                 keys.remove(key);
+                            }
                         }
                     }
                 }
