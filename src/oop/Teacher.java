@@ -16,4 +16,17 @@ public class Teacher extends Person{
     public void setSubject(String[] subject){
         this.subject=subject;
     }
+
+    public int getTeachAge() {
+        return teachAge;
+    }
+    public void setTeachAge(){
+        this.teachAge=teachAge;
+    }
+    public boolean isClazzManager(){
+        return isClazzManager;
+    }
+    public void setClazzManager(boolean clazzManager){
+        this.isClazzManager=isClazzManager;
+    }
 }
