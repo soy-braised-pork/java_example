@@ -7,7 +7,7 @@ public class TestAbstractImplB extends TestAbstract {
 
     public static void main(String[] args) {
         TestAbstractImplB testAbstractImplB = new TestAbstractImplB();
-        TestAbstractImplA testAbstractImplA = new TestAbstractImplA();
+        TestAbstractImpl testAbstractImplA = new TestAbstractImpl();
 
         System.out.println(testAbstractImplB.testa());
         System.out.println(testAbstractImplA.testb());

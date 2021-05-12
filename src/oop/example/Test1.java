@@ -41,5 +41,21 @@ public class Test1 {
         int[] strArray = {1, 2, 3, 4};
 
         String[] strArray1=new String[]{};
+
+        String[][] strings={{}};
+
+        str.notify();
+
+        TestAbstract testAbstract=new TestAbstractImpl();
+
+        testAbstract.testa();
+
+        TestInterface testInterface=new TestInteraceImpl();
+
+        }
+
+        public void String(){
+
+        }
     }
-}
+
