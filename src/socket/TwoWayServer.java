@@ -2,8 +2,10 @@ package socket;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class TwoWayServer {
     public static void main(String[] args) throws IOException {
@@ -16,7 +18,23 @@ public class TwoWayServer {
         Socket socket = server.accept();
 
         //建立好连接后，从socket中获取输入流，并建立缓冲区进行读取
-        InputStream inputStream= socket.getInputStream();
-        byte[] bytes=new byte[1024];
+        InputStream inputStream = socket.getInputStream();
+        byte[] bytes = new byte[1024];
+        int len;
+        StringBuilder sb = new StringBuilder();
+        //只有当客户端关闭它的输出流时，服务端才能取得结尾的-1
+        while ((len = inputStream.read(bytes)) != -1) {
+            //注意指定编码格式，发送方和接收方一定要统一，建议使用UTF-8
+            sb.append(new String(bytes,0,len,"UTF-8"));
+        }
+        System.out.println("get message from client:"+sb);
+
+        OutputStream outputStream= socket.getOutputStream();
+        outputStream.write("Hello Client,I get the message.".getBytes(StandardCharsets.UTF_8));
+
+        inputStream.close();
+        outputStream.close();
+        socket.close();
+        server.close();
     }
 }

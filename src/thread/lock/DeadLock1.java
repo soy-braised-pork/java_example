@@ -15,7 +15,7 @@ package thread.lock;
  */
 
 
-public class DeadLock {
+public class DeadLock1 {
     private static Object resource1 = new Object();  //资源1
     private static Object resource2 = new Object();  //资源2
 
