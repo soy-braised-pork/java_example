@@ -1,6 +1,7 @@
 package socket;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -14,5 +15,8 @@ public class TwoWayServer {
         System.out.println("server将一直等待连接的到来");
         Socket socket = server.accept();
 
+        //建立好连接后，从socket中获取输入流，并建立缓冲区进行读取
+        InputStream inputStream= socket.getInputStream();
+        byte[] bytes=new byte[1024];
     }
 }
