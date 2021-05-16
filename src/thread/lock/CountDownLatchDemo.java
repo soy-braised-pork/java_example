@@ -1,4 +1,4 @@
 package thread.lock;
 
-public class CountDownLatchDemo {
+public class CountDownLatchDemo extends Thread{
 }
