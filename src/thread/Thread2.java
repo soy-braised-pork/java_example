@@ -6,6 +6,7 @@ public class Thread2 implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("2222");
+        String name = Thread.currentThread().getName();
+        System.out.println("runnable test------>" + name);
     }
 }
