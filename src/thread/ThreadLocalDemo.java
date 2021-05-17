@@ -3,6 +3,7 @@ package thread;
 import javax.xml.crypto.Data;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -33,19 +34,19 @@ public class ThreadLocalDemo {
                 if (t1.get() == null) {
                     t1.set(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
                 }
-                Data time = new t1.get().parse("2020-5-17 19:20:" + i % 60);
-//            Data time = new sdf.parse("2021-5-17 19:21:00" + i % 60);
+                Date time = t1.get().parse("2020-5-17 19:20:" + i % 60);
+//            Date time = new sdf.parse("2021-5-17 19:21:00" + i % 60);
                 System.out.println(i + "--->" + time);
-            }catch (ParseException e){
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
     }
 
     public static void main(String[] args) {
-        ExecutorService threadPool= Executors.newFixedThreadPool(10);
+        ExecutorService threadPool = Executors.newFixedThreadPool(10);
 
-        for (int i=0;i<1100;i++){
+        for (int i = 0; i < 1100; i++) {
             threadPool.submit(new ParseData(i));
         }
     }
