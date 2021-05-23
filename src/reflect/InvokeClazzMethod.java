@@ -1,5 +1,7 @@
 package reflect;
 
+import reflect.entity.Person;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -31,12 +33,12 @@ public class InvokeClazzMethod {
         Method priMethod = clazz.getDeclaredMethod("fun4", null);
 
         System.out.println("[Person类的公共方法及父类方法：]");
-        for (Method m : methods){
+        for (Method m : methods) {
             System.out.println(m);
         }
 
         System.out.println("[Person类的私有方法]");
-        for (Method m:declareMethods){
+        for (Method m : declareMethods) {
             System.out.println(m);
         }
 
@@ -47,9 +49,9 @@ public class InvokeClazzMethod {
         System.out.println(priMethod);
 
         //使用反射获取到的方法
-        Object object=clazz.newInstance();
+        Object object = clazz.newInstance();
         priMethod.setAccessible(true);
-        Object more=priMethod.invoke(object,null);
+        Object more = priMethod.invoke(object, null);
         System.out.println(more);
     }
 }
