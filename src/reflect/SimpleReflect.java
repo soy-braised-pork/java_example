@@ -14,7 +14,7 @@ public class SimpleReflect {
         //反射的创建对象
         String className ="reflect.entity.Person";
         Class<?> c=Class.forName(className); //JVM查找并加载指定的类,执行该类的静态代码段
-        Object obj=c.newInstance();
+        Object obj=c.newInstance();  //调用构造函数，创建对象
 
         //获取私有字段
         Field nameField= c.getDeclaredField("name");
