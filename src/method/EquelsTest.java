@@ -1,6 +1,8 @@
 package method;
 
 public class EquelsTest {
+    private static Object EquelsTest;
+
     public static void main(String[] args) {
         Integer aaa = new Integer(5);
         Integer bbb = new Integer(5);
@@ -37,5 +39,10 @@ public class EquelsTest {
         Integer c = 3;
         int d = 3;
         System.out.println(c == d);
+
+
+        // instanceof  对比类
+        System.out.println("==============instanceof===============");
+        System.out.println(EquelsTest instanceof MethodTest);
     }
 }
