@@ -6,13 +6,16 @@ package oop;
 
 
 public class Test extends SimpleTest {
+    public Test(String name) {
+        this.name=name;
+    }
+
     public static void main(String[] args) {
-        SimpleTest s = new Test();
-        System.out.println(s);
+        SimpleTest s = new Test("zlx");
+        System.out.println(s.name);
     }
 }
 
 class SimpleTest {
-    private final String name = "zlx";
-
+    String name;
 }
