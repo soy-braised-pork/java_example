@@ -7,10 +7,6 @@ package designmode;
  *
  */
 
-interface Expr{
-    
-}
-
 
 
 public class expr {
