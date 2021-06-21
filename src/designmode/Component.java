@@ -9,15 +9,15 @@ import java.util.ArrayList;
  */
 
 
-abstract class ComponentTest {
+abstract class Component {
     abstract public void printlocal(String perfix);
 
-    public void add(ComponentTest com) throws Exception {
+    public void add(Component com) throws Exception {
         throw new Exception("文件不能加文件！");
     }
 }
 
-class MyFile extends ComponentTest {
+class MyFile extends Component {
 
     private String name;
 
@@ -31,9 +31,9 @@ class MyFile extends ComponentTest {
     }
 }
 
-class MyDir extends ComponentTest {
+class MyDir extends Component {
 
-    private ArrayList<ComponentTest> sub = new ArrayList<>();
+    private ArrayList<Component> sub = new ArrayList<>();
     private String name;
 
     public MyDir(String name){
@@ -44,12 +44,12 @@ class MyDir extends ComponentTest {
     public void printlocal(String perfix) {
         perfix = perfix + "/" + this.name;
         System.out.println(perfix);
-        for (ComponentTest c:sub){
+        for (Component c:sub){
             c.printlocal(perfix);
         }
     }
     @Override
-    public void add(ComponentTest com) {
+    public void add(Component com) {
         this.sub.add(com);
     }
 }

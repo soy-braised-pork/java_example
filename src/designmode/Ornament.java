@@ -5,4 +5,7 @@ package designmode;
  */
 
 public class Ornament {
+    public static void main(String[] args) {
+
+    }
 }
