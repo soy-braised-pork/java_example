@@ -24,5 +24,8 @@ public class Singleten {
     public static void main(String[] args) {
         Utils u=Utils.getInstance();
         u.setId(12);
+        Utils u1=Utils.getInstance();
+        u.setId(11);
+        System.out.println(u.getId());
     }
 }

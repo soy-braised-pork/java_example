@@ -4,21 +4,20 @@ import java.util.ArrayList;
 
 /**
  * 组合模式
- * <p>
+ *
  * 树形
  */
 
 
-abstract class Component {
+abstract class Com {
     abstract public void printlocal(String perfix);
 
-    public void add(Component com) throws Exception {
+    public void add(Com com) throws Exception {
         throw new Exception("文件不能加文件！");
     }
 }
 
-class MyFile extends Component {
-
+class MyFile extends Com {
     private String name;
 
     public MyFile(String name) {
@@ -31,37 +30,38 @@ class MyFile extends Component {
     }
 }
 
-class MyDir extends Component {
-
-    private ArrayList<Component> sub = new ArrayList<>();
+class MyDir extends Com {
+    private ArrayList<Com> sub = new ArrayList<>();
     private String name;
 
-    public MyDir(String name){
-        this.name=name;
+    public MyDir(String name) {
+        this.name = name;
     }
 
     @Override
     public void printlocal(String perfix) {
         perfix = perfix + "/" + this.name;
         System.out.println(perfix);
-        for (Component c:sub){
+        for (Com c : sub) {
             c.printlocal(perfix);
         }
     }
+
     @Override
-    public void add(Component com) {
+    public void add(Com com) {
         this.sub.add(com);
     }
 }
 
+
 public class Component {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         MyDir m1 = new MyDir("a1");
         MyDir m2 = new MyDir("a2");
         MyDir m3 = new MyDir("a3");
         MyFile f1 = new MyFile("f1");
         MyFile f2 = new MyFile("f2");
-//        MyFile f3=new MyFile("f3");
+        MyFile f3 = new MyFile("f3");
         m1.add(m2);
         m1.add(f1);
         m2.add(m3);
