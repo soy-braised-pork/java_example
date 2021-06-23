@@ -22,7 +22,7 @@ public class MainTest implements Runnable {
         MainTest mainTest = new MainTest();
         Thread t1 = new Thread(mainTest);
         Thread t2 = new Thread(mainTest);
-
+//        System.out.println(ClassLayout.parseInstance(t1).toPrintable);
         t1.start();
         t2.start();
     }
